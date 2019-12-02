@@ -10,9 +10,9 @@ import MainLayout from '../layouts/MainLayout';
 //Import styles
 import './Favourites.css';
 
-const Favourites = () => {
+const Favourites = (props) => {
     return (
-        <MainLayout>
+        <MainLayout {...props}>
             <Card>
                 asd
             </Card>
