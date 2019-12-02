@@ -1,6 +1,6 @@
-# Blank Ionic App
+# PincéReact
 
-A clean React project with Onsen UI
+Pincerapp in react
 
 ## Available Scripts  
 
