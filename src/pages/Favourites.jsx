@@ -12,7 +12,7 @@ import './Favourites.css';
 
 const Favourites = (props) => {
     return (
-        <MainLayout {...props}>
+        <MainLayout {...props} pageTitle='Kedvencek'>
             <Card>
                 asd
             </Card>

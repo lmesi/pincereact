@@ -18,8 +18,10 @@ import MainLayout from '../layouts/MainLayout';
 import './Home.css';
 
 const Home = (props) => {
+    const username = "user0123";
+
     return (
-        <MainLayout {...props}>
+        <MainLayout {...props} pageTitle={username}>
             <Card className="iconCard">
                 <div className="iconContainer">
                     <img src={iconTutorial} alt="Icon card"/>

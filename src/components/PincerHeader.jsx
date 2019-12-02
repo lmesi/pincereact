@@ -8,7 +8,7 @@ const PincerHeader = (props) => {
     return (
         <div className="pincerHeader" onClick={props.onClick} >
             <h1 className="appTitle">PincérApp</h1>
-            <h2 className="pageTitle">Üdv, user0123!</h2>
+            <h2 className="pageTitle">{props.pageTitle}</h2>
         </div>
     )
 }

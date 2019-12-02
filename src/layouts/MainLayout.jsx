@@ -2,7 +2,7 @@
 import React from 'react';
 
 //Onsen imports
-import { Page, Toolbar, ToolbarButton, Icon } from 'react-onsenui';
+import { Page, Toolbar, ToolbarButton, Icon, BackButton } from 'react-onsenui';
 
 //Import pages
 //import Home from '../pages/Home';
@@ -18,14 +18,15 @@ const pushPage = (props, page) => {
 /*
 const renderToolbar = (props) => {
     return (
-        
+        Ide vissza kellene majd varázsolni a toolbart valahogy, de egyelőre nem tudom hogy lehetne átvarázsolni ide a propst
     );
 }*/
 
 const MainLayout = (props) => {
     return (
         <Page renderToolbar={() =>
-            <Toolbar>
+            <Toolbar modifier={props.modifier}>
+                <div className="left"><BackButton modifier={props.modifier}>Back</BackButton></div>
                 <div className="right">
                     <ToolbarButton>
                         <Icon icon={{ default: 'ion-ios-qr-scanner', material: 'ion-md-qr-scanner' }} style={{ color: 'white' }} />
@@ -35,7 +36,7 @@ const MainLayout = (props) => {
                     </ToolbarButton>
                 </div>
             </Toolbar>} contentStyle={{ padding: 0 }}>
-            <PincerHeader />
+            <PincerHeader pageTitle={props.pageTitle} />
             <PincerContent>
                 {props.children}
             </PincerContent>
