@@ -1,24 +1,31 @@
+//React imports
 import React from 'react';
-import { Button, Card, Icon } from 'react-onsenui';
 
+//Onsen imports
+import { Card } from 'react-onsenui';
+
+//Import images
 import iconFavourites from '../images/iconFavourites.png';
 import iconTutorial from '../images/iconTutorial.png';
 import iconWaiter from '../images/iconWaiter.png';
 
+//Import pages
+import Favourites from '../pages/Favourites';
+
+//Import layouts
 import MainLayout from '../layouts/MainLayout';
 
+//Import styles
 import './Home.css';
 
-//import Login from './Login';
-
-/*const pushPage = (props, page) => {
+const pushPage = (props, page) => {
     props.navigator.pushPage({ component: page });
-}*/
+}
 
 const Home = (props) => {
     return (
         <MainLayout>
-            <Card className="iconCard">
+            <Card onClick={() => { pushPage(props, Favourites) }} className="iconCard">
                 <div className="iconContainer">
                     <img src={iconTutorial} alt="Icon card"/>
                 </div>
