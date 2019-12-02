@@ -1,0 +1,37 @@
+ons-card.iconCard {
+    display: flex;
+    margin-top: 3vw;
+    margin-bottom: 4vw;
+}
+
+ons-card.iconCard .iconContainer, ons-card.iconCard .textContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 2vw;
+}
+
+ons-card.iconCard .iconContainer {
+    text-align: center;
+    width: 30%;
+}
+
+ons-card.iconCard .iconContainer img {
+    width: 100%;
+    height: auto;
+}
+
+ons-card.iconCard .textContainer {
+    width: 70%;
+}
+
+ons-card.iconCard .textContainer h4 {
+    text-align: justify;
+    margin: 1vw 0 !important;
+}
+
+ons-card.iconCard .textContainer p {
+    text-align: justify;
+    font-size: 3vw;
+    margin: 1vw 0 !important;
+}

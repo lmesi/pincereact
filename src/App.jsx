@@ -3,8 +3,11 @@ import { Navigator } from 'react-onsenui';
 
 import Home from './pages/Home'
 
+import './App.css';
+
 import 'onsenui/css/onsenui.css';
 import 'onsenui/css/onsen-css-components.css';
+
 
 const renderPage = (route, navigator) => {
   const props = route.props || {};
@@ -15,7 +18,7 @@ const renderPage = (route, navigator) => {
 
 const App = () => {
   return (
-    <Navigator animation="slide" initialRoute={{ component: Home }} renderPage={renderPage} />
+    <Navigator animation="fade" initialRoute={{ component: Home }} renderPage={renderPage} />
   )
 }
 

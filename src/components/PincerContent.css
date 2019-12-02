@@ -1,0 +1,8 @@
+.pincerContent {
+    border: 0px solid rebeccapurple;
+    position: absolute;
+    top: 20%;
+    width: 100%;
+    height: 80%;
+    overflow-y: scroll;
+}

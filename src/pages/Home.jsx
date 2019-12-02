@@ -1,27 +1,53 @@
 import React from 'react';
-import { Toolbar, Page, Button } from 'react-onsenui';
+import { Button, Card, Icon } from 'react-onsenui';
 
-import Login from './Login';
-  
-const pushPage = (props) => {
-    props.navigator.pushPage({ component: Login });
-}
+import iconFavourites from '../images/iconFavourites.png';
+import iconTutorial from '../images/iconTutorial.png';
+import iconWaiter from '../images/iconWaiter.png';
 
-const renderToolbar = () => {
-    return (
-        <Toolbar>
-            <div className="center">Home page</div>
-        </Toolbar>
-    );
-}
+import MainLayout from '../layouts/MainLayout';
+
+import './Home.css';
+
+//import Login from './Login';
+
+/*const pushPage = (props, page) => {
+    props.navigator.pushPage({ component: page });
+}*/
 
 const Home = (props) => {
     return (
-        <Page renderToolbar={renderToolbar}>
-            <p style={{ textAlign: 'center' }}>
-                <Button onClick={() => { pushPage(props) }}>Push to Login</Button>
-            </p>
-        </Page>
+        <MainLayout>
+            <Card className="iconCard">
+                <div className="iconContainer">
+                    <img src={iconTutorial} alt="Icon card"/>
+                </div>
+                <div className="textContainer">
+                    <h4><strong>Ez egy címsor</strong></h4>
+                    <p>Lorem Ipsum egy egyszerû szövegrészlete, szövegutánzata a betûszedõ és nyomdaiparnak. A Lorem Ipsum az 1500-as évek óta standard szövegrészletként szolgált az iparban;</p>
+                </div>
+            </Card>
+
+            <Card className="iconCard">
+                <div className="iconContainer">
+                    <img src={iconWaiter} alt="Icon card"/>
+                </div>
+                <div className="textContainer">
+                    <h4><strong>Ez egy címsor</strong></h4>
+                    <p>Lorem Ipsum egy egyszerû szövegrészlete, szövegutánzata a betûszedõ és nyomdaiparnak. A Lorem Ipsum az 1500-as évek óta standard szövegrészletként szolgált az iparban;</p>
+                </div>
+            </Card>
+            
+            <Card className="iconCard">
+                <div className="iconContainer">
+                    <img src={iconFavourites} alt="Icon card"/>
+                </div>
+                <div className="textContainer">
+                    <h4><strong>Ez egy címsor</strong></h4>
+                    <p>Lorem Ipsum egy egyszerû szövegrészlete, szövegutánzata a betûszedõ és nyomdaiparnak. A Lorem Ipsum az 1500-as évek óta standard szövegrészletként szolgált az iparban;</p>
+                </div>
+            </Card>
+        </MainLayout>
     );
 }
 
