@@ -30,16 +30,37 @@ const MainLayout = (props) => {
     return (
         <Page renderToolbar={() =>
             <Toolbar modifier={props.modifier}>
+
                 <div className="left">
                     {renderBackButton}
                 </div>
+
                 <div className="right">
                     <ToolbarButton>
-                        <Icon icon={{ default: 'ion-ios-qr-scanner', material: 'ion-md-qr-scanner' }} style={{ color: 'white' }} />
+                        <Icon
+                            icon={{
+                                default: 'ion-ios-qr-scanner',
+                                material: 'ion-md-qr-scanner'
+                            }}
+                            
+                            style={{
+                                color: 'white'
+                            }}
+                        />
                     </ToolbarButton>
+
                     <ToolbarButton onClick={() => { pushPage(props, Favourites) }}>
-                        <Icon icon={{ default: 'ion-ios-heart', material: 'ion-md-heart' }} style={{ color: 'white' }} />
+                        <Icon
+                            icon={{
+                                default: 'ion-ios-heart',
+                                material: 'ion-md-heart'
+                            }}
+
+                            style={{
+                                color: 'white'
+                            }} />
                     </ToolbarButton>
+
                 </div>
             </Toolbar>} contentStyle={{ padding: 0 }}>
             <PincerHeader pageTitle={props.pageTitle} />

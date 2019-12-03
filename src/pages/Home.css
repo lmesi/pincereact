@@ -26,12 +26,12 @@ ons-card.iconCard .textContainer {
 }
 
 ons-card.iconCard .textContainer h4 {
-    text-align: justify;
     margin: 1vw 0 !important;
+    text-align: justify;
 }
 
 ons-card.iconCard .textContainer p {
-    text-align: justify;
-    font-size: 3vw;
     margin: 1vw 0 !important;
+    font-size: 3vw;
+    text-align: justify;
 }
