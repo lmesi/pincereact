@@ -11,8 +11,9 @@ import MainLayout from '../layouts/MainLayout';
 import './Favourites.css';
 
 const Favourites = (props) => {
+
     return (
-        <MainLayout {...props} pageTitle='Kedvencek'>
+        <MainLayout {...props} backButtonEnabled={true} pageTitle='Kedvencek'>
             <Card>
                 asd
             </Card>

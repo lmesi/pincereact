@@ -19,9 +19,10 @@ import './Home.css';
 
 const Home = (props) => {
     const username = "user0123";
+    const pageTitle = "Üdv, " + username + "!";
 
     return (
-        <MainLayout {...props} pageTitle={username}>
+        <MainLayout {...props} backButtonEnabled={false} pageTitle={pageTitle}>
             <Card className="iconCard">
                 <div className="iconContainer">
                     <img src={iconTutorial} alt="Icon card"/>

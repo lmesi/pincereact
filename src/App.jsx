@@ -14,6 +14,7 @@ import 'onsenui/css/onsenui.css';
 import 'onsenui/css/onsen-css-components.css';
 
 const renderPage = (route, navigator) => {
+
   const props = route.props || {};
   props.navigator = navigator;
 

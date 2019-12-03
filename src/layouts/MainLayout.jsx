@@ -15,6 +15,7 @@ import PincerContent from '../components/PincerContent';
 const pushPage = (props, page) => {
     props.navigator.pushPage({ component: page });
 }
+
 /*
 const renderToolbar = (props) => {
     return (
@@ -23,10 +24,15 @@ const renderToolbar = (props) => {
 }*/
 
 const MainLayout = (props) => {
+
+    let renderBackButton = props.backButtonEnabled ? <BackButton modifier={props.modifier}>Back</BackButton> : '';
+
     return (
         <Page renderToolbar={() =>
             <Toolbar modifier={props.modifier}>
-                <div className="left"><BackButton modifier={props.modifier}>Back</BackButton></div>
+                <div className="left">
+                    {renderBackButton}
+                </div>
                 <div className="right">
                     <ToolbarButton>
                         <Icon icon={{ default: 'ion-ios-qr-scanner', material: 'ion-md-qr-scanner' }} style={{ color: 'white' }} />
