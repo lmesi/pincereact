@@ -1,6 +1,11 @@
+// React Imports
 import React from 'react';
 
+// Onsen Imports
 import { Card } from 'react-onsenui';
+
+// Import styles
+import './IconCard.css';
 
 const IconCard = (props) => {
     return (

@@ -42,7 +42,7 @@ const MainLayout = (props) => {
                                 default: 'ion-ios-qr-scanner',
                                 material: 'ion-md-qr-scanner'
                             }}
-                            
+
                             style={{
                                 color: 'white'
                             }}
@@ -63,6 +63,7 @@ const MainLayout = (props) => {
 
                 </div>
             </Toolbar>} contentStyle={{ padding: 0 }}>
+            
             <PincerHeader pageTitle={props.pageTitle} />
             <PincerContent>
                 {props.children}

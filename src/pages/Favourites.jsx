@@ -1,13 +1,13 @@
-//React imports
+// React imports
 import React from 'react';
 
-//Onsen imports
+// Onsen imports
 import { Card } from 'react-onsenui';
 
-//Import layouts
+// Import layouts
 import MainLayout from '../layouts/MainLayout';
 
-//Import styles
+// Import styles
 import './Favourites.css';
 
 const Favourites = (props) => {

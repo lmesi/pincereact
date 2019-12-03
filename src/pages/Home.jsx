@@ -16,19 +16,19 @@ import MainLayout from '../layouts/MainLayout';
 import './Home.css';
 
 const Home = (props) => {
-    const username = "user0123";
+    const username = "Attila";
     const pageTitle = "Üdv, " + username + "!";
 
     return (
         <MainLayout
             {...props}
             backButtonEnabled={false}
-            pageTitle={pageTitle} >
+            pageTitle={pageTitle}>
 
             <IconCard
                 cardIcon={iconTutorial}
                 cardTitle="Alkalmazás használata"
-                cardText="asd"
+                cardText="Használd a felső navgiációs sávot a funkciók és oldalak közötti váltáshoz. Felhasználói fiókodba érintsd meg a profilkép helyén lévő gombot."
             />
 
             <IconCard
