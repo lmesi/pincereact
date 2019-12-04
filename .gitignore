@@ -14,6 +14,8 @@
 /pincerapp
 /www
 config.xml
+package.json
+package-lock.json
 
 # production
 /build

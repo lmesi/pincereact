@@ -19,7 +19,9 @@ ons-toolbar {
   top: 0 !important;
   background-image: url(../src/images/pincerbg3.png);
   /* background-size: 100% auto; */
-  background-size: auto 100%;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-color: #e8ecf5 !important;
 }
 
 .page__content {
