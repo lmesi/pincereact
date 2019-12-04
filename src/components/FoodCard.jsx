@@ -13,7 +13,7 @@ const FoodCard = (props) => {
         <Card className={"foodCard " + (props.fullwidth ? 'fullwidth' : '')}>
             <div className="imageContainer">
                 {props.gradient ? <div className="gradientEffect"></div> : ''}
-                <img src={props.cover} />
+                <img src={props.cover} alt="FoodCard cover"/>
             </div>
 
             <div className="titleContainer">

@@ -3,6 +3,7 @@ ons-card.foodCard {
     overflow: hidden;
     margin-top: 6vw !important;
     margin-bottom: 6vw !important;
+    box-shadow: 0px -1px 5px rgba(0, 0, 0, 0.15);
 }
 
 ons-card.fullwidth {
@@ -19,7 +20,7 @@ ons-card.foodCard .imageContainer {
 
 ons-card.foodCard .imageContainer img {
     width: 100%;
-    height: auto;
+    height: 100%;
 }
 
 ons-card.foodCard .imageContainer .gradientEffect {

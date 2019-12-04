@@ -6,7 +6,6 @@ import { Navigator } from 'react-onsenui';
 
 //Import pages
 import Home from './pages/Home'
-import Favourites from './pages/Favourites'
 
 //Import styles
 import './App.css';
@@ -24,7 +23,7 @@ const renderPage = (route, navigator) => {
 
 const App = () => {
   return (
-    <Navigator animation="fade" initialRoute={{ component: Favourites }} renderPage={renderPage} />
+    <Navigator animation="fade" initialRoute={{ component: Home }} renderPage={renderPage} />
   )
 }
 

@@ -16,16 +16,9 @@ const pushPage = (props, page) => {
     props.navigator.pushPage({ component: page });
 }
 
-/*
-const renderToolbar = (props) => {
-    return (
-        Ide vissza kellene majd varázsolni a toolbart valahogy, de egyelőre nem tudom hogy lehetne átvarázsolni ide a propst
-    );
-}*/
-
 const MainLayout = (props) => {
 
-    let renderBackButton = props.backButtonEnabled ? <BackButton modifier={props.modifier}>Back</BackButton> : '';
+    const renderBackButton = props.backButtonEnabled ? <BackButton modifier={props.modifier}>Back</BackButton> : '';
 
     return (
         <Page renderToolbar={() =>
@@ -49,7 +42,7 @@ const MainLayout = (props) => {
                         />
                     </ToolbarButton>
 
-                    <ToolbarButton onClick={() => { pushPage(props, Favourites) }}>
+                    <ToolbarButton onClick={() => props.pageId !== 2 ? pushPage(props, Favourites) : false }>
                         <Icon
                             icon={{
                                 default: 'ion-ios-heart',
