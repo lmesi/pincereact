@@ -2,6 +2,7 @@ ons-card.iconCard {
     display: flex;
     margin-top: 3vw;
     margin-bottom: 4vw;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.14) !important;
 }
 
 ons-card.iconCard .iconContainer, ons-card.iconCard .textContainer {

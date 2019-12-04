@@ -7,6 +7,13 @@
 
 # testing
 /coverage
+/config
+/scripts
+/plugins
+/platforms
+/pincerapp
+/www
+config.xml
 
 # production
 /build
