@@ -1,0 +1,50 @@
+ons-card.foodCard {
+    position: relative;
+    overflow: hidden;
+    margin-top: 6vw !important;
+    margin-bottom: 6vw !important;
+}
+
+ons-card.fullwidth {
+    padding: 0;
+}
+
+ons-card.foodCard .imageContainer {
+    border: 0px solid red;
+    width: 100%;
+    height: 60vw;
+    overflow: hidden;
+    position: relative;
+}
+
+ons-card.foodCard .imageContainer img {
+    width: 100%;
+    height: auto;
+}
+
+ons-card.foodCard .imageContainer .gradientEffect {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff', GradientType=0);
+}
+
+ons-card.foodCard .titleContainer h3 {
+    letter-spacing: -0.5px !important;
+    text-align: justify !important;
+}
+
+ons-card.foodCard .textContainer p {
+    letter-spacing: 0px !important;
+    font-size: 4vw;
+    text-align: justify;
+    font-weight: 400;
+}
+
+ons-card.foodCard .titleContainer h3.padded,
+ons-card.foodCard .textContainer p.padded {
+    padding: 0 4vw;
+}

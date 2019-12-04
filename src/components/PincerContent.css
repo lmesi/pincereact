@@ -6,3 +6,7 @@
     height: 80%;
     overflow-y: scroll;
 }
+
+.pincerContent::-webkit-scrollbar {
+    display: none;
+}

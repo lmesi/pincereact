@@ -11,11 +11,11 @@ const IconCard = (props) => {
     return (
         <Card className="iconCard">
             <div className="iconContainer">
-                <img src={props.cardIcon} alt="Icon card" />
+                <img src={props.icon} alt="Icon card" />
             </div>
             <div className="textContainer">
-                <h4><strong>{props.cardTitle}</strong></h4>
-                <p>{props.cardText}</p>
+                <h4><strong>{props.title}</strong></h4>
+                <p>{props.text}</p>
             </div>
         </Card>
     )

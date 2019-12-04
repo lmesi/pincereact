@@ -26,21 +26,21 @@ const Home = (props) => {
             pageTitle={pageTitle}>
 
             <IconCard
-                cardIcon={iconTutorial}
-                cardTitle="Alkalmazás használata"
-                cardText="Használd a felső navgiációs sávot a funkciók és oldalak közötti váltáshoz. Felhasználói fiókodba érintsd meg a profilkép helyén lévő gombot."
+                icon={iconTutorial}
+                title="Alkalmazás használata"
+                text="Használd a felső navgiációs sávot a funkciók és oldalak közötti váltáshoz. Felhasználói fiókodba érintsd meg a profilkép helyén lévő gombot."
             />
 
             <IconCard
-                cardIcon={iconFavourites}
-                cardTitle="Mentsd el kedvenceidet"
-                cardText="Regisztrálj, és mentsd el kedvenc ételeid az alkalmazásba, hogy később gyorsabban és egyszerűbben rendelj."
+                icon={iconFavourites}
+                title="Mentsd el kedvenceidet"
+                text="Regisztrálj, és mentsd el kedvenc ételeid az alkalmazásba, hogy később gyorsabban és egyszerűbben rendelj."
             />
 
             <IconCard
-                cardIcon={iconWaiter}
-                cardTitle="Hívd a pincért!"
-                cardText="A QR kód olvasó funkcióval másodpercek alatt hívhatod a pincért a választott ételeid megrendeléséhez"
+                icon={iconWaiter}
+                title="Hívd a pincért!"
+                text="A QR kód olvasó funkcióval másodpercek alatt hívhatod a pincért a választott ételeid megrendeléséhez"
             />
         </MainLayout>
     );
