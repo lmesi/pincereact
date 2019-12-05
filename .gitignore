@@ -13,9 +13,12 @@
 /platforms
 /pincerapp
 /www
+/typings
+.vscode/
 config.xml
 package.json
 package-lock.json
+jsconfig.json
 
 # production
 /build
