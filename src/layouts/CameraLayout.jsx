@@ -7,7 +7,7 @@ import { Page, Button } from 'react-onsenui';
 /**
  * CameraLayout
  * 
- * Az applikáció, a telefon kamerájának igénybevételekor használatos elrendezése.
+ * Az applikáció a telefon kamerájának igénybevételekor használatos elrendezése.
  */
 const CameraLayout = (props) => {
 
