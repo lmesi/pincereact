@@ -15,7 +15,6 @@ import FoodCard from '../components/FoodCard';
 import './Favourites.css';
 
 const Favourites = (props) => {
-
     return (
         <MainLayout
             {...props}

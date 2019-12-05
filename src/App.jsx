@@ -13,14 +13,23 @@ import './App.css';
 import 'onsenui/css/onsenui.css';
 import 'onsenui/css/onsen-css-components.css';
 
+/**
+ * renderPage(props, navigator)
+ * 
+ * Oldal renderelés
+ */
 const renderPage = (route, navigator) => {
-
   const props = route.props || {};
   props.navigator = navigator;
 
   return React.createElement(route.component, props);
 }
 
+/**
+ * App
+ * 
+ * OnsenUI Navigator
+ */
 const App = () => {
   return (
     <Navigator animation="fade" initialRoute={{ component: Home }} renderPage={renderPage} />
