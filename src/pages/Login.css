@@ -1,6 +1,5 @@
 .toast__message,
 .toast__message span {
-    font-weight: 100 !important;
     font-family: 'Roboto', 'Noto', sans-serif !important;
 }
 
