@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 
 //Onsen imports
-import { Toast, Button, Input, Icon } from 'react-onsenui';
+import { Toast, Button, Input } from 'react-onsenui';
 
 //Import pages
 import Register from '../pages/Register';
@@ -29,6 +29,12 @@ const Login = (props) => {
         props.navigator.pushPage({ component: page });
     }
 
+
+    /**
+     * hideToast()
+     * 
+     * Toast üzenet automatikus elrejtése
+     */
     const hideToast = () => {
         setTimeout(() => {
             setToastStatus(false);
@@ -56,11 +62,6 @@ const Login = (props) => {
                     placeholder='Jelszó' />
 
                 <Button>
-                    <Icon
-                        icon={{ default: 'ion-ios-log-in', material: 'ion-md-log-in' }}
-                        size={{ default: 20, material: 20 }}
-                        style={{ color: 'white', marginRight: '1vw' }}
-                    />
                     Bejelentkezés
                 </Button>
             </div>
@@ -71,7 +72,7 @@ const Login = (props) => {
                 Ha még nem rendelkezel felhasználói fiókkal,
                 <span
                     className="color-accent"
-                    onClick={() => { pushPage(props, Register) }}>itt regisztrálhatsz</span> egyet.<button onClick={() => { setToastStatus(false) }}>OK</button>
+                    onClick={() => { pushPage(props, Register) }}> itt regisztrálhatsz</span> egyet.<button onClick={() => { setToastStatus(false) }}>OK</button>
             </Toast>
 
         </MainLayout>

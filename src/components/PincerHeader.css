@@ -18,15 +18,15 @@
 }
 
 .pincerHeader div:nth-child(1) {
-    width: 65%;
+    width: 64%;
 }
 
 .pincerHeader div:nth-child(2) {
-    width: 35%;
+    width: 36%;
 }
 
 .pincerHeader div:nth-child(2) img {
-    width: 40%;
+    width: 30%;
     height: auto;
     border: 4px solid #fff;
     border-radius: 100%;

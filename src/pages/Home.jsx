@@ -29,17 +29,17 @@ const Home = (props) => {
             <IconCard
                 icon={iconTutorial}
                 title="Alkalmazás használata"
-                text="Használd a felső navgiációs sávot a funkciók és oldalak közötti váltáshoz. Felhasználói fiókodba érintsd meg a profilkép helyén lévő gombot." />
+                text="Használd a felső navgiációs sávot a funkciók és oldalak közötti váltáshoz. Felhasználói fiókodba való belépéshez érintsd meg a profilkép helyén lévő gombot." />
 
             <IconCard
                 icon={iconFavourites}
                 title="Mentsd el kedvenceidet"
-                text="Regisztrálj, és mentsd el kedvenc ételeid az alkalmazásba, hogy később gyorsabban és egyszerűbben rendelj." />
+                text="Regisztrálj, és mentsd el kedvenc ételeid az alkalmazásba, hogy később gyorsabban és egyszerűbben rendelhess." />
 
             <IconCard
                 icon={iconWaiter}
                 title="Hívd a pincért!"
-                text="A QR kód olvasó funkcióval másodpercek alatt hívhatod a pincért a választott ételeid megrendeléséhez" />
+                text="A QR kód olvasó funkcióval másodpercek alatt hívhatod a pincért a választott ételeid megrendeléséhez." />
         </MainLayout>
     );
 }

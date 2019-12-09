@@ -18,5 +18,16 @@ ons-input {
 
 ons-button {
     margin-top: 4vw !important;
+    text-align: center;
 }
 
+ons-button > ons-icon {
+    color: #fff;
+    margin-right: 2vw; 
+}
+
+.alert-dialog-title,
+.alert-dialog-title--material,
+.alert-dialog-content--material {
+    font-family: 'Roboto', 'Noto', sans-serif !important;
+}
