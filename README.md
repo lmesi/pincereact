@@ -8,6 +8,10 @@ Pincerapp in react
 
 Runs the app in the development mode.
 
+### `npm run build`
+
+Build the project with cordova plugins
+
 ### `cordova run platform`
 
-Runs the app with Cordova plugins with selected platform
+Runs the app with the selected platform
