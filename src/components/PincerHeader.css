@@ -13,6 +13,25 @@
     left: 0;
 }
 
+.pincerHeader div {
+    display: inline-block;
+}
+
+.pincerHeader div:nth-child(1) {
+    width: 65%;
+}
+
+.pincerHeader div:nth-child(2) {
+    width: 35%;
+}
+
+.pincerHeader div:nth-child(2) img {
+    width: 40%;
+    height: auto;
+    border: 4px solid #fff;
+    border-radius: 100%;
+}
+
 .appTitle {
     font-size: 10vw !important;
     font-family: 'Modak', sans-serif !important;

@@ -9,7 +9,11 @@ import './Login.css';
 
 const Login = (props) => {
     return (
-        <MainLayout>
+        <MainLayout
+            {...props}
+            backButtonEnabled={true}
+            pageTitle='Bejelentkezés'
+            pageId={4}>
             <p>ez a login page</p>
         </MainLayout>
     )

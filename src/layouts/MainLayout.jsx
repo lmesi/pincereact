@@ -81,7 +81,7 @@ const MainLayout = (props) => {
             }
             contentStyle={{ padding: 0 }}>
 
-            <PincerHeader pageTitle={props.pageTitle} />
+            <PincerHeader {...props} pageTitle={props.pageTitle} />
             <PincerContent>
                 {props.children}
             </PincerContent>
