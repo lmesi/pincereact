@@ -2,7 +2,7 @@
 import React from 'react';
 
 //Onsen imports
-import { Page, Button } from 'react-onsenui';
+import { Page } from 'react-onsenui';
 
 /**
  * CameraLayout
@@ -36,9 +36,7 @@ const CameraLayout = (props) => {
 
 
     return (
-        <Page {...props} onInit={toggleQRScanner} style={{ display: 'none' }}>
-
-        </Page>
+        <Page {...props} onInit={toggleQRScanner} style={{ display: 'none' }} />
     );
 }
 
