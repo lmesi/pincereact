@@ -8,7 +8,6 @@ import { Page, Toolbar, ToolbarButton, Icon, BackButton } from 'react-onsenui';
 //import Home from '../pages/Home';
 import Favourites from '../pages/Favourites';
 import Scanner from '../pages/Scanner';
-import Menu from '../pages/Menu';
 
 //Import components
 import PincerHeader from '../components/PincerHeader';

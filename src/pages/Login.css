@@ -1,0 +1,23 @@
+.toast__message,
+.toast__message span {
+    font-weight: 100 !important;
+    font-family: 'Roboto', 'Noto', sans-serif !important;
+}
+
+.container {
+    max-width: 60%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+ons-input {
+    margin: 4vw 0;
+}
+
+ons-button {
+    margin-top: 4vw !important;
+}
+
