@@ -20,7 +20,9 @@ const Register = (props) => {
     const [emailText, setEmailText] = useState('');
     const [disabledButton, setDisabledButtonStatus] = useState(true);
     const [alertDialogStatus, setAlertDialogStatus] = useState(false);
-    const [errorMessage, setErrorMessage] = useState('');
+    const [responseMessage, setResponseMessage] = useState('');
+    const [userData, setUserData] = useState();
+    const [errorStatus, setErrorStatus] = useState(true);
 
     useEffect(() => {
         if ((usernameText.length !== 0) && (passwordText.length !== 0) && (repeatPasswordText.length !== 0) && (emailText.length !== 0)) {
@@ -38,30 +40,33 @@ const Register = (props) => {
                 .then(user => {
                     user.user.updateProfile({ displayName: usernameText })
                         .then(() => {
-                            setAlertDialogStatus(true);
-                            console.log("Register props:");
-                            console.log(props);
-                            props.navigator.pushPage({ component: Home, props: { user: user.user } });
+                            setErrorStatus(false)
+                            setAlertDialogStatus(true)
+                            setResponseMessage("Sikeres regisztráció.")
+                            setUserData(user.user)
                         })
                 })
                 .catch(function (error) {
-                    // Handle Errors here.
+                    setErrorStatus(true)
                     console.log(error)
+                    setResponseMessage(error.message)
+                    setAlertDialogStatus(true)
                 });
         }
     }
 
     const formValidation = () => {
         if (usernameText.length < 4 || usernameText.length > 12) {
-            setErrorMessage("A felhasználónév minimum 4, maximum 12 karakterből állhat.");
+            setResponseMessage("A felhasználónév minimum 4, maximum 12 karakterből állhat.");
         }
         else if (passwordText.length < 6) {
-            setErrorMessage("A jelszavadnak minimum 6 karakterből kell állnia.");
+            setResponseMessage("A jelszavadnak minimum 6 karakterből kell állnia.");
         }
         else if ((passwordText.length > 6) && (passwordText !== repeatPasswordText)) {
-            setErrorMessage("A megadott jelszavak nem egyeznek.");
+            setResponseMessage("A megadott jelszavak nem egyeznek.");
         }
         else {
+            setErrorStatus(false);
             return true;
         }
     }
@@ -108,15 +113,20 @@ const Register = (props) => {
             </div>
 
             <AlertDialog isOpen={alertDialogStatus} onCancel={() => { setAlertDialogStatus(false) }} cancelable>
-                <div className="alert-dialog-title">Sikertelen regisztráció</div>
+                <div className="alert-dialog-title">Regisztráció</div>
                 <div className="alert-dialog-content">
-                    {errorMessage}
+                    {responseMessage}
                 </div>
                 <div className="alert-dialog-footer">
-                    <AlertDialogButton 
-                        onClick={() => { 
-                            setAlertDialogStatus(false); 
-                        }} 
+                    <AlertDialogButton
+                        onClick={() => {
+                            setAlertDialogStatus(false)
+
+                            {
+                                if(!errorStatus)  
+                                props.navigator.pushPage({ component: Home, props: { username: userData } });
+                            }
+                        }}
                         className="alert-dialog-button">
                         OK
                     </AlertDialogButton >

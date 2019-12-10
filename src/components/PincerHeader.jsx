@@ -25,7 +25,7 @@ const PincerHeader = (props) => {
         <div className="pincerHeader" onClick={props.onClick} >
             <div>
                 <h1 className="appTitle">PincérApp</h1>
-                <h2 className="pageTitle">{`Üdv ${props.displayName?props.displayName:''}!`}</h2>
+                <h2 className="pageTitle">{props.pageTitle}</h2>
             </div>
 
             <div>

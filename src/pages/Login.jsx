@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import firebase from '../firebase'
 
 //Onsen imports
-import { Toast, Button, Input } from 'react-onsenui';
+import { Toast, Button, Input, AlertDialog, AlertDialogButton } from 'react-onsenui';
 
 //Import pages
 import Register from '../pages/Register';
@@ -20,8 +20,10 @@ const Login = (props) => {
     const [emailText, setEmailText] = useState('');
     const [passwordText, setPasswordText] = useState('');
     const [toastStatus, setToastStatus] = useState(true);
-    const [displayName, setDisplayName] = useState('');
-
+    const [alertDialogStatus, setAlertDialogStatus] = useState(false);
+    const [responseMessage, setResponseMessage] = useState('');
+    const [userData, setUserData] = useState();
+    const [errorStatus, setErrorStatus] = useState(true);
     /**
      * pushPage()
      * 
@@ -37,10 +39,16 @@ const Login = (props) => {
             .auth()
             .signInWithEmailAndPassword(emailText, passwordText)
             .then(user => {
-                setDisplayName(user.user.displayName);
-                props.navigator.pushPage({ component: Home });})
-            .catch(function(error) {
+                setErrorStatus(false)
+                setResponseMessage("Sikeres bejelentkezés.");
+                setAlertDialogStatus(true);
+                setUserData(user.user);
+            })
+            .catch(function (error) {
                 console.log(error.message)
+                setErrorStatus(true)
+                setResponseMessage(error.message)
+                setAlertDialogStatus(true)
             });
     }
 
@@ -60,7 +68,6 @@ const Login = (props) => {
         <MainLayout
             {...props}
             backButtonEnabled={true}
-            displayName={props.displayName}
             pageTitle='Bejelentkezés'
             pageId={4}>
 
@@ -78,7 +85,7 @@ const Login = (props) => {
                     placeholder='Jelszó' />
 
                 <Button
-                     onClick={() => { 
+                    onClick={() => {
                         handleLogInForm()
                     }}>
                     Bejelentkezés
@@ -93,6 +100,28 @@ const Login = (props) => {
                     className="color-accent"
                     onClick={() => { pushPage(props, Register) }}> itt regisztrálhatsz</span> egyet.<button onClick={() => { setToastStatus(false) }}>OK</button>
             </Toast>
+
+            <AlertDialog isOpen={alertDialogStatus} onCancel={() => { setAlertDialogStatus(false) }} cancelable>
+                <div className="alert-dialog-title">Bejelentkezés</div>
+                <div className="alert-dialog-content">
+                    {responseMessage}
+                </div>
+                <div className="alert-dialog-footer">
+                    <AlertDialogButton
+                        onClick={() => {
+                            setAlertDialogStatus(false);
+
+                            {
+                                if(!errorStatus)  
+                                props.navigator.pushPage({ component: Home, props: { username: userData } });
+                            }
+
+                        }}
+                        className="alert-dialog-button">
+                        OK
+                    </AlertDialogButton>
+                </div>
+            </AlertDialog>
 
         </MainLayout>
     )

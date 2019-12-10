@@ -21,7 +21,6 @@ import 'onsenui/css/onsen-css-components.css';
 const renderPage = (route, navigator) => {
   const props = route.props || {};
   props.navigator = navigator;
-  props.user = {};
 
   return <route.component {...props} />;
 }
@@ -33,7 +32,7 @@ const renderPage = (route, navigator) => {
  */
 const App = () => {
   return (
-    <Navigator animation="fade" initialRoute={{ component: Home }} renderPage={renderPage} />
+    <Navigator animation="fade" initialRoute={{ component: Home, props: { key: 'Home' } }} renderPage={renderPage} />
   )
 }
 
