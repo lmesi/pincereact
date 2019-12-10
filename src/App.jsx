@@ -21,8 +21,9 @@ import 'onsenui/css/onsen-css-components.css';
 const renderPage = (route, navigator) => {
   const props = route.props || {};
   props.navigator = navigator;
+  props.user = {};
 
-  return React.createElement(route.component, props);
+  return <route.component {...props} />;
 }
 
 /**

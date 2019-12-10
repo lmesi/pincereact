@@ -30,8 +30,8 @@ const CameraLayout = (props) => {
      * A beolvasott kĂłd tartalmát jelení­ti meg
      * ( cordova-plugin-qrscanner )
      */
-    const displayContents = () => {
-        alert("beolvasva");
+    const displayContents = (err, text) => {
+        alert(text);
     }
 
 

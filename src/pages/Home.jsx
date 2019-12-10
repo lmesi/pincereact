@@ -1,5 +1,5 @@
 //React imports
-import React from 'react';
+import React, { useState } from 'react';
 
 //Import images
 import iconFavourites from '../images/iconFavourites.png';
@@ -16,14 +16,21 @@ import MainLayout from '../layouts/MainLayout';
 import './Home.css';
 
 const Home = (props) => {
-    const username = "Attila";
     const pageTitle = "Üdv!";
+
+    console.log("Home props:");
+    console.log(props);
+
+    if (props.user) {
+        console.log(props.user.displayName);
+    }
 
     return (
         <MainLayout
             {...props}
             backButtonEnabled={false}
             pageTitle={pageTitle}
+            displayName={props.user.displayName?props.user.displayName:''}
             pageId={1}>
 
             <IconCard

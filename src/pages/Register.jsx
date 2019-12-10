@@ -26,39 +26,39 @@ const Register = (props) => {
         if ((usernameText.length !== 0) && (passwordText.length !== 0) && (repeatPasswordText.length !== 0) && (emailText.length !== 0)) {
             setDisabledButtonStatus(false);
         }
-    });
+    }, [setDisabledButtonStatus, usernameText, passwordText, repeatPasswordText, emailText]);
 
     const handleRegisterForm = ev => {
-        console.log('LogIn withc Credential..')
-        console.log(usernameText)
-        console.log(passwordText)
-        /// Validate States...
-        if( formValidation() ) {
-            firebase
-            .auth()
-            .createUserWithEmailAndPassword(emailText, passwordText)
-            .then(user => {
-                user.user.updateProfile({displayName: usernameText})
-                global.USER = user
-                console.log(user)
-                setAlertDialogStatus(true)
-                props.navigator.pushPage({ component: Home });})
-            .catch(function(error) {
-                // Handle Errors here.
-                console.log(error)
-          });
-        }        
-    }
 
+        /// Validate States...
+        if (formValidation()) {
+            firebase
+                .auth()
+                .createUserWithEmailAndPassword(emailText, passwordText)
+                .then(user => {
+                    user.user.updateProfile({ displayName: usernameText })
+                        .then(() => {
+                            setAlertDialogStatus(true);
+                            console.log("Register props:");
+                            console.log(props);
+                            props.navigator.pushPage({ component: Home, props: { user: user.user } });
+                        })
+                })
+                .catch(function (error) {
+                    // Handle Errors here.
+                    console.log(error)
+                });
+        }
+    }
 
     const formValidation = () => {
         if (usernameText.length < 4 || usernameText.length > 12) {
             setErrorMessage("A felhasználónév minimum 4, maximum 12 karakterből állhat.");
         }
-        else if(passwordText.length < 6) {
+        else if (passwordText.length < 6) {
             setErrorMessage("A jelszavadnak minimum 6 karakterből kell állnia.");
         }
-        else if( (passwordText.length > 6) && (passwordText !== repeatPasswordText)) {
+        else if ((passwordText.length > 6) && (passwordText !== repeatPasswordText)) {
             setErrorMessage("A megadott jelszavak nem egyeznek.");
         }
         else {
@@ -100,7 +100,7 @@ const Register = (props) => {
 
                 <Button
                     disabled={disabledButton}
-                    onClick={() => { 
+                    onClick={() => {
                         handleRegisterForm()
                     }}>
                     Regisztráció
@@ -113,7 +113,11 @@ const Register = (props) => {
                     {errorMessage}
                 </div>
                 <div className="alert-dialog-footer">
-                    <AlertDialogButton onClick={() => { setAlertDialogStatus(false) }} className="alert-dialog-button">
+                    <AlertDialogButton 
+                        onClick={() => { 
+                            setAlertDialogStatus(false); 
+                        }} 
+                        className="alert-dialog-button">
                         OK
                     </AlertDialogButton >
                 </div>

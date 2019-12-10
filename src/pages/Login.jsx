@@ -20,6 +20,7 @@ const Login = (props) => {
     const [emailText, setEmailText] = useState('');
     const [passwordText, setPasswordText] = useState('');
     const [toastStatus, setToastStatus] = useState(true);
+    const [displayName, setDisplayName] = useState('');
 
     /**
      * pushPage()
@@ -36,8 +37,7 @@ const Login = (props) => {
             .auth()
             .signInWithEmailAndPassword(emailText, passwordText)
             .then(user => {
-                global.USER = user
-                console.log(user)
+                setDisplayName(user.user.displayName);
                 props.navigator.pushPage({ component: Home });})
             .catch(function(error) {
                 console.log(error.message)
@@ -60,6 +60,7 @@ const Login = (props) => {
         <MainLayout
             {...props}
             backButtonEnabled={true}
+            displayName={props.displayName}
             pageTitle='Bejelentkezés'
             pageId={4}>
 
@@ -68,7 +69,7 @@ const Login = (props) => {
                     value={emailText} float
                     onChange={(event) => { setEmailText(event.target.value) }}
                     type="string"
-                    placeholder='Felhasználónév' />
+                    placeholder='E-mail cím' />
 
                 <Input
                     value={passwordText} float
