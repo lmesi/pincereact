@@ -1,5 +1,6 @@
 // React imports
 import React, { useState } from 'react';
+import firebase from '../firebase'
 
 //Onsen imports
 import { Toast, Button, Input } from 'react-onsenui';
@@ -9,13 +10,14 @@ import Register from '../pages/Register';
 
 // Import layouts
 import MainLayout from '../layouts/MainLayout';
+import Home from './Home'
 
 // Import styles
 import './Login.css';
 
 const Login = (props) => {
 
-    const [usernameText, setUsernameText] = useState('');
+    const [emailText, setEmailText] = useState('');
     const [passwordText, setPasswordText] = useState('');
     const [toastStatus, setToastStatus] = useState(true);
 
@@ -27,6 +29,19 @@ const Login = (props) => {
     const pushPage = (props, page) => {
         setToastStatus(false);
         props.navigator.pushPage({ component: page });
+    }
+
+    const handleLogInForm = ev => {
+        firebase
+            .auth()
+            .signInWithEmailAndPassword(emailText, passwordText)
+            .then(user => {
+                global.USER = user
+                console.log(user)
+                props.navigator.pushPage({ component: Home });})
+            .catch(function(error) {
+                console.log(error.message)
+            });
     }
 
 
@@ -50,8 +65,8 @@ const Login = (props) => {
 
             <div className="container">
                 <Input
-                    value={usernameText} float
-                    onChange={(event) => { setUsernameText(event.target.value) }}
+                    value={emailText} float
+                    onChange={(event) => { setEmailText(event.target.value) }}
                     type="string"
                     placeholder='Felhasználónév' />
 
@@ -61,7 +76,10 @@ const Login = (props) => {
                     type="password"
                     placeholder='Jelszó' />
 
-                <Button>
+                <Button
+                     onClick={() => { 
+                        handleLogInForm()
+                    }}>
                     Bejelentkezés
                 </Button>
             </div>
