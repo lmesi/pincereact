@@ -1,11 +1,13 @@
 // React imports
 import React, { useState, useEffect } from 'react';
+import firebase from '../firebase'
 
 //Onsen imports
 import { Input, Button, AlertDialog, AlertDialogButton } from 'react-onsenui';
 
 // Import layouts
 import MainLayout from '../layouts/MainLayout';
+import Home from './Home'
 
 // Import styles
 import './Register.css';
@@ -26,6 +28,28 @@ const Register = (props) => {
         }
     });
 
+    const handleRegisterForm = ev => {
+        console.log('LogIn withc Credential..')
+        console.log(usernameText)
+        console.log(passwordText)
+        /// Validate States...
+        if( formValidation() ) {
+            firebase
+            .auth()
+            .createUserWithEmailAndPassword(emailText, passwordText)
+            .then(user => {
+                user.user.updateProfile({displayName: usernameText})
+                global.USER = user
+                console.log(user)
+                setAlertDialogStatus(true)
+                props.navigator.pushPage({ component: Home });})
+            .catch(function(error) {
+                // Handle Errors here.
+                console.log(error)
+          });
+        }        
+    }
+
 
     const formValidation = () => {
         if (usernameText.length < 4 || usernameText.length > 12) {
@@ -37,8 +61,9 @@ const Register = (props) => {
         else if( (passwordText.length > 6) && (passwordText !== repeatPasswordText)) {
             setErrorMessage("A megadott jelszavak nem egyeznek.");
         }
-
-        setAlertDialogStatus(true);
+        else {
+            return true;
+        }
     }
 
     return (
@@ -75,7 +100,9 @@ const Register = (props) => {
 
                 <Button
                     disabled={disabledButton}
-                    onClick={() => { formValidation() }}>
+                    onClick={() => { 
+                        handleRegisterForm()
+                    }}>
                     Regisztráció
                 </Button>
             </div>

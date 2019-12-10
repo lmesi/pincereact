@@ -17,7 +17,7 @@ import './Home.css';
 
 const Home = (props) => {
     const username = "Attila";
-    const pageTitle = "Üdv, " + username + "!";
+    const pageTitle = "Üdv!";
 
     return (
         <MainLayout
