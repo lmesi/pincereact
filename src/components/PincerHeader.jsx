@@ -11,7 +11,6 @@ import profileButtonImage from '../images/user.png';
 import './PincerHeader.css';
 
 const PincerHeader = (props) => {
-
     /**
      * pushPage()
      * 

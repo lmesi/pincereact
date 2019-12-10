@@ -16,7 +16,6 @@ import MainLayout from '../layouts/MainLayout';
 import './Home.css';
 
 const Home = (props) => {
-
     return (
         <MainLayout
             {...props}

@@ -13,7 +13,6 @@ import Home from './Home'
 import './Register.css';
 
 const Register = (props) => {
-
     const [usernameText, setUsernameText] = useState('');
     const [passwordText, setPasswordText] = useState('');
     const [repeatPasswordText, setRepeatPasswordText] = useState('');
@@ -129,7 +128,7 @@ const Register = (props) => {
                         }}
                         className="alert-dialog-button">
                         OK
-                    </AlertDialogButton >
+                    </AlertDialogButton>
                 </div>
             </AlertDialog>
         </MainLayout>

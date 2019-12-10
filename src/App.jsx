@@ -16,6 +16,7 @@ import 'onsenui/css/onsen-css-components.css';
 /**
  * renderPage(props, navigator)
  * 
+ * 
  * Oldal renderelés
  */
 const renderPage = (route, navigator) => {
