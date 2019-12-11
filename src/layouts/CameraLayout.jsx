@@ -3,6 +3,7 @@ import React from 'react';
 
 //Onsen imports
 import { Page } from 'react-onsenui';
+import Menu from '../pages/Menu'
 
 /**
  * CameraLayout
@@ -32,6 +33,7 @@ const CameraLayout = (props) => {
      */
     const displayContents = (err, text) => {
         alert(text);
+        props.navigator.pushPage({ component: Menu, props: { data: text } });
     }
 
 
