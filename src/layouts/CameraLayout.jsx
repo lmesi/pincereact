@@ -32,7 +32,8 @@ const CameraLayout = (props) => {
      * ( cordova-plugin-qrscanner )
      */
     const displayContents = (err, text) => {
-        alert(text);
+        alert(text)
+        console.log(text)
         props.navigator.pushPage({ component: Menu, props: { data: text } });
     }
 

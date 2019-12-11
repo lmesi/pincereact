@@ -10,7 +10,7 @@ import './FoodCard.css';
 
 const FoodCard = (props) => {
     return (
-        <Card className={"foodCard " + (props.fullwidth ? 'fullwidth' : '')}>
+        <Card onClick={props.onClick} className={"foodCard " + (props.fullwidth ? 'fullwidth' : '')}>
             <div className="imageContainer">
                 {props.gradient ? <div className="gradientEffect"></div> : ''}
                 <img src={props.cover} alt="FoodCard cover"/>

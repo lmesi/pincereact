@@ -2,12 +2,14 @@
 import React, { useState, useEffect } from 'react';
 import firebase from '../firebase'
 
+//Import pages
+import Cart from './Cart'
+
 //Import images
 import cover1 from '../images/card_cover_placholder1.jpg';
-//import cover2 from '../images/card_cover_placholder2.jpg';
 
 // Import layouts
-import MainLayout from '../layouts/MainLayout';
+import MenuLayout from '../layouts/MenuLayout';
 
 // Import components
 import FoodCard from '../components/FoodCard';
@@ -37,31 +39,45 @@ function HandleMenu(name) {
 }
 
 const Menu = (props) => {
+
     const dishes = HandleMenu('alma'/*props.data.name */)
-    const [order, setOrder] = useState([])
-    console.log(props.data)
+    
+    let orders = {
+        dishes: [],
+        restaurant: []
+    }
 
-    /*const handleOrderProcess = (id) => {
-        let orders = []
-        orders.push()
+    orders['restaurant'].push({
+        name: props.data.name,
+        table: props.data.table
+    })
 
-    }*/
+    const addItem = (id, name) => {
+        orders['dishes'].push({
+                id: id,
+                name: name,
+                value: 0
+        })
+        console.log(orders);
+    }
 
     return (
-        <MainLayout
+        <MenuLayout
             {...props}
             backButtonEnabled={true}
+            cartFunction={() => { props.navigator.pushPage({ component: Cart, props: { cart: orders } }) }}
             pageTitle='Étlap'
-            pageId={3}>
-            
-            {dishes.map((dish) => 
-                    <FoodCard key={dish.id}
+            pageId={5}>
+
+            {dishes.map((dish) =>
+                <FoodCard key={dish.id}
                     fullwidth
                     cover={cover1}
                     title={dish.name}
-                    text={dish.description} />
+                    text={dish.description}
+                    onClick={() => { addItem(dish.id, dish.name) }} />
             )}
-        </MainLayout>
+        </MenuLayout>
     )
 }
 

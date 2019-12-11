@@ -28,7 +28,7 @@ const PincerHeader = (props) => {
             </div>
 
             <div>
-                <img src={profileButtonImage} alt="Profile Button"  onClick={() => props.pageId !== 4 ? pushPage(props, Login) : false}/>
+                <img src={profileButtonImage} alt="Profile Button"  onClick={() => props.pageId !== 3 ? pushPage(props, Login) : false}/>
             </div>
         </div>
     )

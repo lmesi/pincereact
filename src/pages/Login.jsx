@@ -68,7 +68,7 @@ const Login = (props) => {
             {...props}
             backButtonEnabled={true}
             pageTitle='Bejelentkezés'
-            pageId={4}>
+            pageId={3}>
 
             <div className="container">
                 <Input

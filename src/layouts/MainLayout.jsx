@@ -29,16 +29,7 @@ const MainLayout = (props) => {
     const pushPage = (props, page) => {
         props.navigator.pushPage({ component: page });
     }
-
-    /**
-     * openQRScanner()
-     * 
-     * Navigál a QR kód olvasó oldalára
-     */
-    const openQRScanner = () => {
-        pushPage(props, Scanner);
-    }
-
+    
     return (
         <Page
             renderToolbar={
@@ -50,7 +41,7 @@ const MainLayout = (props) => {
                         </div>
 
                         <div className="right">
-                            <ToolbarButton onClick={() => { openQRScanner(); }}>
+                            <ToolbarButton onClick={() => { pushPage(props, Scanner); }}>
                                 <Icon
                                     icon={{
                                         default: 'ion-ios-qr-scanner',
