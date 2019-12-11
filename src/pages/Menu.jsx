@@ -41,22 +41,20 @@ function HandleMenu(name) {
 const Menu = (props) => {
 
     const dishes = HandleMenu('alma'/*props.data.name */)
-    
+
     let orders = {
         dishes: [],
-        restaurant: []
+        restaurant: [{
+            name: props.data.name,
+            table: props.data.table
+        }]
     }
-
-    orders['restaurant'].push({
-        name: props.data.name,
-        table: props.data.table
-    })
 
     const addItem = (id, name) => {
         orders['dishes'].push({
-                id: id,
-                name: name,
-                value: 0
+            id: id,
+            name: name,
+            quantity: 1
         })
         console.log(orders);
     }
