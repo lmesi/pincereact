@@ -110,10 +110,8 @@ const Login = (props) => {
                         onClick={() => {
                             setAlertDialogStatus(false);
 
-                            {
-                                if(!errorStatus)  
+                            if (!errorStatus)
                                 props.navigator.pushPage({ component: Home, props: { username: userData } });
-                            }
 
                         }}
                         className="alert-dialog-button">
