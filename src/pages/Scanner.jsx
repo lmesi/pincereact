@@ -9,7 +9,7 @@ import CameraLayout from '../layouts/CameraLayout';
 
 const Scanner = (props) => {
     return (
-        <CameraLayout>
+        <CameraLayout {...props}>
             <Button>asd</Button>
         </CameraLayout>
     );
