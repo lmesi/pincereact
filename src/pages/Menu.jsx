@@ -42,28 +42,38 @@ const Menu = (props) => {
 
     const dishes = HandleMenu('alma'/*props.data.name */)
 
+    /*
     let orders = {
         dishes: [],
         restaurant: [{
             name: props.data.name,
             table: props.data.table
         }]
+    }*/
+
+    if(props.cart['restaurant'].length === 0) {
+        props.cart['restaurant'].push({
+            name: props.data.name,
+            table: props.data.table
+        })
     }
 
+    console.log(props.cart);
+
     const addItem = (id, name) => {
-        orders['dishes'].push({
+        props.cart['dishes'].push({
             id: id,
             name: name,
             quantity: 1
         })
-        console.log(orders);
+        console.log(props.cart);
     }
 
     return (
         <MenuLayout
             {...props}
-            backButtonEnabled={true}
-            cartFunction={() => { props.navigator.pushPage({ component: Cart, props: { cart: orders } }) }}
+            backButtonEnabled={false}
+            cartFunction={() => { props.navigator.pushPage({ component: Cart, props: { cart: props.cart } }) }}
             pageTitle='Étlap'
             pageId={5}>
 

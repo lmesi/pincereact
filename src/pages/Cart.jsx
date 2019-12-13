@@ -5,11 +5,14 @@ import React from 'react';
 import MainLayout from '../layouts/MainLayout';
 
 //Import styles
-import './Cart.css';
+import styles from './Cart.css';
 
 const Cart = (props) => {
 
     console.log(props);
+    console.log(props.cart);
+    console.log(props.cart['dishes']);
+    console.log(props.cart['restaurant']);
 
     return (
         <MainLayout
@@ -18,7 +21,17 @@ const Cart = (props) => {
             pageTitle='Kosár'
             pageId={6}>
 
-            <p>Ez a kosár</p>
+            <div className={styles.container}>
+
+                {props.cart['dishes'].map((dish) =>
+                    <ul key={dish.id}>
+                        <li>{dish.name}</li>
+                        <li>{dish.quantity}</li>
+                    </ul>
+                )}
+
+            </div>
+
         </MainLayout>
     );
 }

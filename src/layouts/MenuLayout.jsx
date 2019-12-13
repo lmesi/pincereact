@@ -32,6 +32,7 @@ const MenuLayout = (props) => {
 
     return (
         <Page
+            onDeviceBackButton={() => { alert("Ide jön majd a kezdőoldalra visszalépés dialogja") }}
             renderToolbar={
                 () =>
                     <Toolbar modifier={props.modifier}>
@@ -71,7 +72,12 @@ const MenuLayout = (props) => {
             }
             contentStyle={{ padding: 0 }}>
 
-            <PincerHeader {...props} pageTitle={props.pageTitle} displayName={props.displayName} />
+            <PincerHeader
+                {...props}
+                pageTitle={props.pageTitle}
+                displayName={props.displayName}
+            />
+
             <PincerContent>
                 {props.children}
             </PincerContent>
@@ -79,8 +85,9 @@ const MenuLayout = (props) => {
             <Fab
                 ripple={true}
                 position={"bottom right"}
-                style={{backgroundColor: '#2979ff'}}
+                style={{ backgroundColor: '#2979ff' }}
                 onClick={props.cartFunction}>
+
                 <Icon
                     icon={{
                         default: 'ion-ios-restaurant',
@@ -88,7 +95,9 @@ const MenuLayout = (props) => {
                     }}
                     size={26}
                     fixedWidth={false}
-                    style={{ verticalAlign: 'middle', color: '#fff' }} />
+                    style={{ verticalAlign: 'middle', color: '#fff' }}
+                />
+
             </Fab>
         </Page>
     )
