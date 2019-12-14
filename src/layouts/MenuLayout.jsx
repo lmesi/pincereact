@@ -86,7 +86,7 @@ const MenuLayout = (props) => {
                 ripple={true}
                 position={"bottom right"}
                 style={{ backgroundColor: '#2979ff' }}
-                onClick={props.cartFunction}>
+                onClick={props.orderFunction}>
 
                 <Icon
                     icon={{

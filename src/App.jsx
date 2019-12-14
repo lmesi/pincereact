@@ -6,7 +6,7 @@ import { Navigator } from 'react-onsenui';
 
 //Import pages
 import Home from './pages/Home'
-import Cart from './pages/Cart'
+import Order from './pages/Order'
 
 //Import styles
 import './App.css';
@@ -24,8 +24,8 @@ const renderPage = (route, navigator) => {
   const props = route.props || {};
   props.navigator = navigator;
   
-  if (!props.cart) {
-    props.cart = {
+  if (!props.order) {
+    props.order = {
       dishes: [],
       restaurant: []
     }
@@ -42,7 +42,7 @@ const renderPage = (route, navigator) => {
  */
 const App = () => {
   return (
-    <Navigator animation="fade" initialRoute={{ component: Cart, props: { key: 'Home' } }} renderPage={renderPage} />
+    <Navigator animation="fade" initialRoute={{ component: Home, props: { key: 'Home' } }} renderPage={renderPage} />
   )
 }
 

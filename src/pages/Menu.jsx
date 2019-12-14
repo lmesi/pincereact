@@ -2,8 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import firebase from '../firebase'
 
+//Onsen imports
+import { AlertDialog, AlertDialogButton } from 'react-onsenui';
+
 //Import pages
-import Cart from './Cart'
+import Order from './Order'
 
 //Import images
 import cover1 from '../images/card_cover_placholder1.jpg';
@@ -40,40 +43,58 @@ function HandleMenu(name) {
 
 const Menu = (props) => {
 
+    const [alertDialogStatus, setAlertDialogStatus] = useState(false);
+
+
     const dishes = HandleMenu('alma'/*props.data.name */)
 
-    /*
-    let orders = {
-        dishes: [],
-        restaurant: [{
-            name: props.data.name,
-            table: props.data.table
-        }]
-    }*/
-
-    if(props.cart['restaurant'].length === 0) {
-        props.cart['restaurant'].push({
+    if (props.order['restaurant'].length === 0) {
+        props.order['restaurant'].push({
             name: props.data.name,
             table: props.data.table
         })
     }
 
-    console.log(props.cart);
+    console.log(props.order);
+
 
     const addItem = (id, name) => {
-        props.cart['dishes'].push({
-            id: id,
-            name: name,
-            quantity: 1
-        })
-        console.log(props.cart);
+        let isItemAlreadyInArray = false;
+        let soughtIndex;
+
+        if (props.order['dishes'].length == 0) {
+            props.order['dishes'].push({
+                id: id,
+                name: name,
+                quantity: 1
+            })
+        }
+        else {
+            props.order['dishes'].forEach((item, index) => {
+                if (item.id == id) {
+                    isItemAlreadyInArray = true;
+                    soughtIndex = index;
+                }
+            })
+
+            if (isItemAlreadyInArray) {
+                setAlertDialogStatus(true)
+            } else {
+                props.order['dishes'].push({
+                    id: id,
+                    name: name,
+                    quantity: 1
+                })
+            }
+        }
+        console.log(props.order);
     }
 
     return (
         <MenuLayout
             {...props}
             backButtonEnabled={false}
-            cartFunction={() => { props.navigator.pushPage({ component: Cart, props: { cart: props.cart } }) }}
+            orderFunction={() => { props.navigator.pushPage({ component: Order, props: { order: props.order } }) }}
             pageTitle='Étlap'
             pageId={5}>
 
@@ -85,6 +106,22 @@ const Menu = (props) => {
                     text={dish.description}
                     onClick={() => { addItem(dish.id, dish.name) }} />
             )}
+
+
+
+            <AlertDialog isOpen={alertDialogStatus} onCancel={() => { setAlertDialogStatus(false) }} cancelable>
+                <div className="alert-dialog-title">Rendelés</div>
+                <div className="alert-dialog-content">
+                    Ez az étel már szerepel a rendelési listádban.
+                </div>
+                <div className="alert-dialog-footer">
+                    <AlertDialogButton
+                        onClick={() => { setAlertDialogStatus(false) }}
+                        className="alert-dialog-button">
+                        OK
+                    </AlertDialogButton>
+                </div>
+            </AlertDialog>
         </MenuLayout>
     )
 }
