@@ -1,5 +1,6 @@
 //React imports
 import React, {useState, useEffect} from 'react';
+import firebase from '../firebase'
 
 //Import layouts
 import OrderLayout from '../layouts/OrderLayout';
@@ -13,6 +14,26 @@ import './Order.css';
 const Order = (props) => {
 
     const [order, setOrder] = useState(props.order['dishes']);
+
+    const handleOrder = (order) =>{
+        console.log(order)
+        console.log("befut")
+        firebase
+            .firestore()
+            .collection("order")
+            .add({
+                dishes: order,
+                restaurant: props.order["restaurant"][0].name,
+                table: props.order["restaurant"][0].table,
+                done: false
+            })
+            .then((docRef) => {
+                console.log("Document successfully written!", docRef.id);
+            })
+            .catch((error) => {
+                console.error("Error writing document: ", error);
+            });
+    }
 
     const increaseQuantity = (index) => {
         let array = [...order];
@@ -38,7 +59,9 @@ const Order = (props) => {
     return (
         <OrderLayout
             {...props}
-            orderFunction={()=> { alert("Ez a rendelés küldés funkció gombja"); }}
+            orderFunction={()=> {
+                handleOrder(order);
+            }}
             backButtonEnabled={true}
             pageTitle='Rendelésem'
             pageId={6}>
