@@ -132,7 +132,7 @@ const Menu = (props) => {
 
 
 
-            <AlertDialog isOpen={alertDialogStatus} onCancel={() => { setAlertDialogStatus(false) }} modifier={'material'} isCancelable={false}>
+            <AlertDialog isOpen={alertDialogStatus} onCancel={() => { setExitStatus(false); setAlertDialogStatus(false); }} modifier={'material'} isCancelable={false}>
                 <div className="alert-dialog-title">Rendelés</div>
                 <div className="alert-dialog-content">
                     {dialogMessage}
@@ -140,7 +140,7 @@ const Menu = (props) => {
                 <div className="alert-dialog-footer">
                     {exitStatus ?
                         <AlertDialogButton
-                            onClick={() => { setAlertDialogStatus(false) }}>
+                            onClick={() => { setExitStatus(false); setAlertDialogStatus(false) }}>
                             Vissza
                     </AlertDialogButton>
                         : false}
