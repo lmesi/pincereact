@@ -25,7 +25,8 @@ const Order = (props) => {
                 dishes: order,
                 restaurant: props.order["restaurant"][0].name,
                 table: props.order["restaurant"][0].table,
-                done: false
+                done: false,
+                time: firebase.firestore.Timestamp.now()
             })
             .then((docRef) => {
                 console.log("Document successfully written!", docRef.id);
