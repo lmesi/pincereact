@@ -3,10 +3,10 @@ import React, { useState, useEffect } from 'react';
 import firebase from '../firebase'
 
 //Onsen imports
-import { AlertDialog, AlertDialogButton } from 'react-onsenui';
+import { AlertDialog, Button, AlertDialogButton } from 'react-onsenui';
 
 //Import pages
-import Order from './Order'
+import Home from './Home'
 
 //Import images
 import cover1 from '../images/card_cover_placholder1.jpg';
@@ -44,9 +44,25 @@ function HandleMenu(name) {
 const Menu = (props) => {
 
     const [alertDialogStatus, setAlertDialogStatus] = useState(false);
-
+    const [exitStatus, setExitStatus] = useState(false);
+    const [dialogMessage, setDialogMessage] = useState('');
 
     const dishes = HandleMenu('alma'/*props.data.name */)
+
+    const showExitMenuDialog = () => {
+        setExitStatus(true); 
+        setDialogMessage("Biztosan ki szeretnél lépni a kezdőoldalra? Minden eddig választott étel elveszik a rendelési listádból."); 
+        setAlertDialogStatus(true);
+    }
+
+    const exitMenu = () => {
+        setExitStatus(false); 
+        setDialogMessage(""); 
+        setAlertDialogStatus(false);
+        props.navigator.pushPage({ component: Home });
+    }
+
+
 
     if (props.order['restaurant'].length === 0) {
         props.order['restaurant'].push({
@@ -68,6 +84,9 @@ const Menu = (props) => {
                 name: name,
                 quantity: 1
             })
+
+            setDialogMessage("Hozzáadva a rendelési listádhoz.")
+            setAlertDialogStatus(true)
         }
         else {
             props.order['dishes'].forEach((item, index) => {
@@ -78,6 +97,7 @@ const Menu = (props) => {
             })
 
             if (isItemAlreadyInArray) {
+                setDialogMessage("Ez az étel már szerepel a rendelési listádban.")
                 setAlertDialogStatus(true)
             } else {
                 props.order['dishes'].push({
@@ -85,6 +105,9 @@ const Menu = (props) => {
                     name: name,
                     quantity: 1
                 })
+
+                setDialogMessage("Hozzáadva a rendelési listádhoz.")
+                setAlertDialogStatus(true)
             }
         }
         console.log(props.order);
@@ -93,8 +116,8 @@ const Menu = (props) => {
     return (
         <MenuLayout
             {...props}
+            exitFunction={showExitMenuDialog}
             backButtonEnabled={false}
-            orderFunction={() => { props.navigator.pushPage({ component: Order, props: { order: props.order } }) }}
             pageTitle='Étlap'
             pageId={5}>
 
@@ -109,20 +132,25 @@ const Menu = (props) => {
 
 
 
-            <AlertDialog isOpen={alertDialogStatus} onCancel={() => { setAlertDialogStatus(false) }} cancelable>
+            <AlertDialog isOpen={alertDialogStatus} onCancel={() => { setAlertDialogStatus(false) }} modifier={'material'} isCancelable={false}>
                 <div className="alert-dialog-title">Rendelés</div>
                 <div className="alert-dialog-content">
-                    Ez az étel már szerepel a rendelési listádban.
+                    {dialogMessage}
                 </div>
                 <div className="alert-dialog-footer">
+                    {exitStatus ?
+                        <AlertDialogButton
+                            onClick={() => { setAlertDialogStatus(false) }}>
+                            Vissza
+                    </AlertDialogButton>
+                        : false}
                     <AlertDialogButton
-                        onClick={() => { setAlertDialogStatus(false) }}
-                        className="alert-dialog-button">
+                        onClick={() => { exitStatus ? exitMenu() : setAlertDialogStatus(false) }}>
                         OK
                     </AlertDialogButton>
                 </div>
             </AlertDialog>
-        </MenuLayout>
+        </MenuLayout >
     )
 }
 

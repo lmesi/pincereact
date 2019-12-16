@@ -2,7 +2,7 @@
 import React, {useState, useEffect} from 'react';
 
 //Import layouts
-import MainLayout from '../layouts/MainLayout';
+import OrderLayout from '../layouts/OrderLayout';
 
 //Import components
 import ItemCard from '../components/ItemCard';
@@ -15,14 +15,12 @@ const Order = (props) => {
     const [order, setOrder] = useState(props.order['dishes']);
 
     const increaseQuantity = (index) => {
-        console.log('increase');
         let array = [...order];
         array[index].quantity++;
         setOrder(array);
     }
 
     const decreaseQuantity = (index) => {
-        console.log('decrease');
         let array = [...order];
         if(array[index].quantity > 1) {
             array[index].quantity--;
@@ -31,15 +29,16 @@ const Order = (props) => {
     }
 
     const deleteItem = (index) => {
-        console.log('delete');
         let array = [...order];
-        array.slice(index);
+        array.splice(index, 1);
         setOrder(array);
+        props.order['dishes'] = array;
     }
 
     return (
-        <MainLayout
+        <OrderLayout
             {...props}
+            orderFunction={()=> { alert("Ez a rendelés küldés funkció gombja"); }}
             backButtonEnabled={true}
             pageTitle='Rendelésem'
             pageId={6}>
@@ -58,7 +57,7 @@ const Order = (props) => {
 
             </div>
 
-        </MainLayout>
+        </OrderLayout>
     );
 }
 

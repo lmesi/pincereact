@@ -1,25 +1,24 @@
 //React imports
-import React, { useState } from 'react';
+import React from 'react';
 
 //Onsen imports
-import { Page, Toolbar, ToolbarButton, Icon, BackButton, Fab, AlertDialog, Button } from 'react-onsenui';
+import { Page, Toolbar, ToolbarButton, Icon, BackButton, Fab } from 'react-onsenui';
 
 //Import pages
 //import Home from '../pages/Home';
 import Favourites from '../pages/Favourites';
 import Scanner from '../pages/Scanner';
-import Order from '../pages/Order';
 
 //Import components
 import PincerHeader from '../components/PincerHeader';
 import PincerContent from '../components/PincerContent';
 
 /**
- * MenuLayout
+ * OrderLayout
  * 
  * Az applikáció elsődleges elrendezési formája.
  */
-const MenuLayout = (props) => {
+const OrderLayout = (props) => {
     const renderBackButton = props.backButtonEnabled ? <BackButton modifier={props.modifier}>Back</BackButton> : '';
 
     /**
@@ -33,7 +32,6 @@ const MenuLayout = (props) => {
 
     return (
         <Page
-            onDeviceBackButton={props.exitFunction}
             renderToolbar={
                 () =>
                     <Toolbar modifier={props.modifier}>
@@ -86,17 +84,17 @@ const MenuLayout = (props) => {
             <Fab
                 ripple={true}
                 position={"bottom right"}
-                style={{ backgroundColor: '#f0f0f0' }}
-                onClick={() => { props.navigator.pushPage({ component: Order, props: { order: props.order } }) }}>
+                style={{ backgroundColor: '#2979ff' }}
+                onClick={props.orderFunction}>
 
                 <Icon
                     icon={{
-                        default: 'ion-ios-options',
-                        material: 'ion-md-options'
+                        default: 'ion-ios-restaurant',
+                        material: 'ion-md-restaurant'
                     }}
                     size={26}
                     fixedWidth={false}
-                    style={{ lineHeight: 0, verticalAlign: 'middle', color: '#444' }}
+                    style={{ lineHeight: 0, verticalAlign: 'middle', color: '#fff' }}
                 />
 
             </Fab>
@@ -104,4 +102,4 @@ const MenuLayout = (props) => {
     )
 }
 
-export default MenuLayout;
+export default OrderLayout;
